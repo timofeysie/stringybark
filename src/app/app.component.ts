@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sassy-app';
+
+  constructor() { }
+
+  clickDot(arg: string) {
+    console.log('arg',arg);
+  }
+  
 }
