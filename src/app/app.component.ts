@@ -13,7 +13,6 @@ export class AppComponent implements OnDestroy {
   constructor(private router: Router) { }
 
   clickDot(arg: string) {
-    console.log('arg',arg);
     this.navigating = true;
     this.router.navigate(['basic']);
   }
