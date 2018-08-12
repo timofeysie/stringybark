@@ -1,11 +1,20 @@
 # Sassy Patterns
 
+## The line pattern
+
+http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview
+
+
 ## Getting Started
 
 $ ng new sassy-app --style=scss
 $ ng g component components/dot
 
-A wrong direction:
+## The dot pattern 
+
+Creating a filed of svg dots that are responsive and added slowly in snake like manner is the goal.
+
+At first wrong direction:
 ```
     ngAfterViewInit() {
       this.zone.run(() => {
@@ -23,6 +32,21 @@ A wrong direction:
 ```
 
 This will never show up on the screen, though it appears in the DOM.
+
+So went with changing the opacity using the renderer.  
+```
+let item: HTMLElement = document.getElementById(row+'-'+col);
+this.renderer.setStyle(item, 'opacity', '1');
+```            
+
+And the template looks a little bit like this:
+```
+<dot-component #i:j id="{{row+'-'+col}}"></dot-component>
+```
+
+At least we wont have to worry about the container collapsing when elements are removed from the DOM.
+
+
 
 
 # SassyApp
