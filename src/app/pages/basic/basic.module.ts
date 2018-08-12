@@ -17,5 +17,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [BasicPage, DotComponent],
+  entryComponents: [DotComponent]
 })
 export class BasicModule {}

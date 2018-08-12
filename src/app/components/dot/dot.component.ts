@@ -13,7 +13,8 @@ export class DotComponent implements OnInit {
   @Input() dotR: number;
   @Input() dotFill: number;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

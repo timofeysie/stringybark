@@ -1,11 +1,14 @@
 <div class="container">
-    <div class="group2">
-        <dot-component dotHeight="100" 
-            dotWidth="100"
-            dotCx="50" 
-            dotCy="50" 
-            dotR="40" 
-            dotFill="brown">
-        </dot-component>
+    <div *ngFor="let row of rows; let i = index;">
+        <div *ngFor="let col of cols;let j = index;" class="group2">
+            <dot-component #i:j id="{{row+'-'+col}}"
+                class="visible"
+                dotHeight="100" 
+                dotWidth="100"
+                dotCx="50" 
+                dotCy="50" 
+                dotR="40" 
+                dotFill="brown">
+            </dot-component>
     </div>
 </div>

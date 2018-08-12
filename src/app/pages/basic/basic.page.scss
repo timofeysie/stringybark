@@ -3,18 +3,10 @@
 }
 .group1 {
     background-color: brown;
-    display: inline-block;
-    position: relative;
-    top: 10px;
-    left: 10px;
-    margin: -20px;
-    width: 100%;
-    max-width: 490px;
 }
 .group2 {
     background-color: bisque;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    max-width: auto;
+}
+.visible {
+    opacity: 0;
 }

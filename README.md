@@ -5,6 +5,24 @@
 $ ng new sassy-app --style=scss
 $ ng g component components/dot
 
+A wrong direction:
+```
+    ngAfterViewInit() {
+      this.zone.run(() => {
+        let d1 = this.renderer.createElement('dot-component');
+        this.renderer.setAttribute(d1,'dotHeight','100'); 
+        this.renderer.setAttribute(d1,'dotWidth','100'); 
+        this.renderer.setAttribute(d1,'dotCx','50'); 
+        this.renderer.setAttribute(d1,'dotCy','50'); 
+        this.renderer.setAttribute(d1,'dotR','40'); 
+        this.renderer.setAttribute(d1,'dotFill','brown'); 
+        this.renderer.appendChild(this.dot.nativeElement,d1);
+        console.log('this.dot.nativeElement',this.dot.nativeElement);  
+      });
+  }
+```
+
+This will never show up on the screen, though it appears in the DOM.
 
 
 # SassyApp
