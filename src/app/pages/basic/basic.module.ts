@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { BasicPage } from './basic.page';
+import { DotComponent } from '../../components/dot/dot.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BasicPage]
+  declarations: [BasicPage, DotComponent],
 })
 export class BasicModule {}
