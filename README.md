@@ -1,13 +1,50 @@
 # The Stringybark Project
 
+
+There are at least two other strategies including step-by-step where you start by using the module loader, migrating to TypeScript, and many other steps.  Or there is the ngUpgrade approach where you can convert a feature at a time and both sites run side by side, or using UpgradeModule with NgModules... I went thru the PhoneCat Upgrade Tutorial but it was long and messy.
+So yes, I think creating a new project with the CLI is a good first step.  With SCSS built in is a good option using a command like this: 
+ng new brushlands-2 --style=scss
+
+
 ## The line pattern
 
-Here is one of the starting points for a line drawing with http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview
+[Here](http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview) is one of the starting points for a line drawing with.
 
 A stringybark (Eucalyptus tetradonta) bark canvas is cut from the tree in the wet season when the sap is rising.  After heating in the fire, the bark is flattened under foot and weighted with stones or logs to dry flat.
 
 Ochres in red, yellow and black are used along with mineral oxides of iron and manganese and white pipeclay, or calcium carbonate. Ochres may be fixed with a binder such as PVA glue, or previously, with the sap or juice of plants such as orchid bulbs.
 
+The waves pattern is another good option for the first line drawing.  This is the basic layout of what was originally an [Inkscape](https://inkscape.org/en/) drawing:
+```
+<svg>
+  <g id="g5184">
+    <g id="g5186">
+      <path id="path5188">
+      <path id="path5242">
+    </g>
+  </g>
+</svg>
+```
+
+The concept is that all path's must have a stroke like this:
+```
+<svg ...>
+  <path class="path" stroke="#000000" ... >
+</svg>
+```
+
+With a class:
+```
+.path {
+  stroke-dasharray: 20;
+}
+```
+
+Let's show the strokes on ours:
+```
+<g id="g5184"
+    style="stroke:#894635;stroke-linecap:round;stroke-linejoin:round"
+```
 
 ## The wonderful line drawing SVG technique
 

@@ -6,10 +6,10 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-page-detail',
-  templateUrl: './basic.page.html',
-  styleUrls: ['./basic.page.scss'],
+  templateUrl: './lines.page.html',
+  styleUrls: ['./lines.page.scss'],
 })
-export class BasicPage implements OnInit, AfterViewInit {
+export class LinesPage implements OnInit, AfterViewInit {
   rows: number [];
   cols: number [];
   // two sections of rows and columns of dots that snake along this path
@@ -33,24 +33,24 @@ export class BasicPage implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-      for (let i = 0; i < this.rows.length; i++) {
-        for (let j = 0; j < this.cols.length; j++) {
-          let item = document.getElementById(i+'-'+j);
-        }
-      }
+      // for (let i = 0; i < this.rows.length; i++) {
+      //   for (let j = 0; j < this.cols.length; j++) {
+      //     let item = document.getElementById(i+'-'+j);
+      //   }
+      // }
     }
 
     /** This kicks off the promise chain to paint the background and then
      * follow a specific consecutive route to fill in the dots.
      */
     ngAfterViewInit() {
-      this.runBgOrder1().then(() => {
-        this.runBgOrder2().then(() => {
-          setTimeout(() => {
-            this.runOrder();
-          },this.origDelay*5);
-        });
-      });
+      // this.runBgOrder1().then(() => {
+      //   this.runBgOrder2().then(() => {
+      //     setTimeout(() => {
+      //       this.runOrder();
+      //     },this.origDelay*5);
+      //   });
+      // });
     }
 
     runOrder() {

@@ -14,7 +14,11 @@ export class AppComponent implements OnDestroy {
 
   clickDot(arg: string) {
     this.navigating = true;
-    this.router.navigate(['basic']);
+    if (arg === '2') {
+      this.router.navigate(['lines']);
+    } else {
+      this.router.navigate(['basic']);
+    }
   }
 
   ngOnDestroy(){
