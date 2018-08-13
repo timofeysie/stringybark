@@ -1,18 +1,19 @@
 # The Stringybark Project
 
-
-There are at least two other strategies including step-by-step where you start by using the module loader, migrating to TypeScript, and many other steps.  Or there is the ngUpgrade approach where you can convert a feature at a time and both sites run side by side, or using UpgradeModule with NgModules... I went thru the PhoneCat Upgrade Tutorial but it was long and messy.
-So yes, I think creating a new project with the CLI is a good first step.  With SCSS built in is a good option using a command like this: 
-ng new brushlands-2 --style=scss
-
-
-## The line pattern
-
-[Here](http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview) is one of the starting points for a line drawing with.
+A JavaScript, CSS and SVG dot and line drawing app.  We will be reproducing this traditional technique.
 
 A stringybark (Eucalyptus tetradonta) bark canvas is cut from the tree in the wet season when the sap is rising.  After heating in the fire, the bark is flattened under foot and weighted with stones or logs to dry flat.
 
 Ochres in red, yellow and black are used along with mineral oxides of iron and manganese and white pipeclay, or calcium carbonate. Ochres may be fixed with a binder such as PVA glue, or previously, with the sap or juice of plants such as orchid bulbs.
+
+
+## The wonderful line drawing SVG technique
+
+Using the [Lengthy](https://www.npmjs.com/package/lengthy-svg) lib, the length will automatically be added to the element as a CSS Var to make it easy to do CSS animations of SVG stroke-dashoffset for the wonderful line drawing SVG technique.
+
+However, it would be great to do it all ourselves using CSS variables and animations as a more solutrean solution.
+
+[Here](http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview) is one of the starting points for a line drawing with.
 
 The waves pattern is another good option for the first line drawing.  This is the basic layout of what was originally an [Inkscape](https://inkscape.org/en/) drawing:
 ```
@@ -37,20 +38,43 @@ With a class:
 ```
 .path {
   stroke-dasharray: 20;
+  animation: dash 5s linear;
 }
 ```
+
+We don't really want a dash array, but if we make the dashes so long it covers all the shapes, it looks just like the complete shape as if it wasn't dashed at all. Next make stroke-dasharray a longer value than the length of the stroke. 
+
+Then offset the strokes so that instead of covering all the shapes, it is nlt covering the entire shape.  It will look like the shape isn't there at all.
+
+Next animate the strokes offset back to 0
+
 
 Let's show the strokes on ours:
 ```
 <g id="g5184"
-    style="stroke:#894635;stroke-linecap:round;stroke-linejoin:round"
+    style="stroke:#894635;stroke-linecap:round;stroke-linejoin:round">
+    <path id="path5232" class="path" stroke="#000000"
+         d="M 147.708,74.386 C 183.978,73.483 260,92.362 314.85,210.9 M 150.096,29.375 C 186.366,28.473 260,52.362 314.249,128.565 M 146.68,-10.47 c 43.987,0.383 113.403,17.886 169.145,82.884 M 149.027,-47.146 c 43.988,0.384 114.55,13.364 166.585,66.582 M 147.544,116.5 c 20.055,-0.26 102.456,-4.138 168.52,198.583"
+         transform="matrix(0.7922,0,0,-0.97372,-116.303,771.26)"
 ```
 
-## The wonderful line drawing SVG technique
+We will need a class like this:
+```
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear forwards;
+}
+@keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+}
+```
 
-Using the [Lengthy](https://www.npmjs.com/package/lengthy-svg) lib, the length will automatically be added to the element as a CSS Var to make it easy to do CSS animations of SVG stroke-dashoffset for the wonderful line drawing SVG technique.
+This *works* but it's not exactly what we want.  The first problem is that all the lines start drawing at the same time.  We want to stagger them.  Also, two lines have to connect so one should start after the other, in groups so to speak.  Actually, there are thee curving horizontal lines which connect to create one line.  We should start from the top and move down.  There's also the back ground which we could paint or not.  Depending on how it looks with the bark background and without.
 
-However, it would be great to do it all ourselves using CSS variables and animations as a more solutrean solution.
+To co-ordinate this, we can use a promise chain.  It would be better than the dots nested promises.
 
 
 ## Getting Started
