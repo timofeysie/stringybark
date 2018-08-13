@@ -1,8 +1,13 @@
-# Sassy Patterns
+# The Stringybark Project
 
 ## The line pattern
 
 http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview
+
+A stringybark (Eucalyptus tetradonta) bark canvas is cut from the tree in the wet season when the sap is rising.  After heating in the fire, the bark is flattened under foot and weighted with stones or logs to dry flat.
+
+Ochres in red, yellow and black are used along with mineral oxides of iron and manganese and white pipeclay, or calcium carbonate. Ochres may be fixed with a binder such as PVA glue, or previously, with the sap or juice of plants such as orchid bulbs.
+
 
 
 ## Getting Started
