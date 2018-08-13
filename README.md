@@ -2,18 +2,28 @@
 
 ## The line pattern
 
-http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview
+Here is one of the starting points for a line drawing with http://next.plnkr.co/edit/F5vdyvScYPv046z17oGa?preview
 
 A stringybark (Eucalyptus tetradonta) bark canvas is cut from the tree in the wet season when the sap is rising.  After heating in the fire, the bark is flattened under foot and weighted with stones or logs to dry flat.
 
 Ochres in red, yellow and black are used along with mineral oxides of iron and manganese and white pipeclay, or calcium carbonate. Ochres may be fixed with a binder such as PVA glue, or previously, with the sap or juice of plants such as orchid bulbs.
 
 
+## The wonderful line drawing SVG technique
+
+Using the [Lengthy](https://www.npmjs.com/package/lengthy-svg) lib, the length will automatically be added to the element as a CSS Var to make it easy to do CSS animations of SVG stroke-dashoffset for the wonderful line drawing SVG technique.
+
+However, it would be great to do it all ourselves using CSS variables and animations as a more solutrean solution.
+
 
 ## Getting Started
 
+Created a new project with Angular 6.1 with SCSS built in.
+```
 $ ng new sassy-app --style=scss
 $ ng g component components/dot
+```
+
 
 ## The dot pattern 
 
@@ -51,10 +61,15 @@ And the template looks a little bit like this:
 
 At least we wont have to worry about the container collapsing when elements are removed from the DOM.
 
+## Responsive dots
+
+The [Flexbox SVG a la Nico O](http://next.plnkr.co/edit/MXpmFahkBuDA2tTUKVNs?preview) plunker has a three-layer responsive layout that works great.
 
 
 
-# SassyApp
+#
+
+# The original readme
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
 
