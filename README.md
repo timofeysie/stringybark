@@ -117,10 +117,13 @@ this.renderer.setStyle(item, 'opacity', '1');
 
 And the template looks a little bit like this:
 ```
-<dot-component #i:j id="{{row+'-'+col}}"></dot-component>
+<dot-component id="{{row+'-'+col}}"
 ```
 
 At least we wont have to worry about the container collapsing when elements are removed from the DOM.
+
+After this it was a slow matter of creating the array of rows and columns in the correct order to mimmick a person who would create the dots in lines but not necessary from top to bottom.  We also paint the back ground first and have one pattern run after another.
+
 
 ## Responsive dots
 

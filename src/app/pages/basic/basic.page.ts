@@ -1,7 +1,4 @@
-import { Component, 
-  OnInit, Inject, AfterViewInit, Renderer2
-} from '@angular/core';
-import { DotComponent } from '../../components/dot/dot.component';
+import { Component, OnInit, Inject, AfterViewInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 
 @Component({
@@ -33,11 +30,11 @@ export class BasicPage implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-      for (let i = 0; i < this.rows.length; i++) {
-        for (let j = 0; j < this.cols.length; j++) {
-          let item = document.getElementById(i+'-'+j);
-        }
-      }
+      // for (let i = 0; i < this.rows.length; i++) {
+      //   for (let j = 0; j < this.cols.length; j++) {
+      //     let item = document.getElementById(i+'-'+j);
+      //   }
+      // }
     }
 
     /** This kicks off the promise chain to paint the background and then
