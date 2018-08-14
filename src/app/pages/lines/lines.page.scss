@@ -1,19 +1,17 @@
 .container {
     display: flex;
 }
-.group1 {
+svg {
     background-color: brown;
 }
 .group2 {
     background-color: black;
 }
-.invisible {
-    opacity: 0;
-}
 .path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: dash 5s linear forwards;
+  animation: dash 10s linear forwards;
+  opacity: 0;
 }
 
 @keyframes dash {

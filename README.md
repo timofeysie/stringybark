@@ -44,10 +44,7 @@ With a class:
 
 We don't really want a dash array, but if we make the dashes so long it covers all the shapes, it looks just like the complete shape as if it wasn't dashed at all. Next make stroke-dasharray a longer value than the length of the stroke. 
 
-Then offset the strokes so that instead of covering all the shapes, it is nlt covering the entire shape.  It will look like the shape isn't there at all.
-
-Next animate the strokes offset back to 0
-
+Then offset the strokes so that instead of covering all the shapes, it is not covering the entire shape.  It will look like the shape isn't there at all.  Next animate the strokes offset back to 0.
 
 Let's show the strokes on ours:
 ```
@@ -74,7 +71,10 @@ We will need a class like this:
 
 This *works* but it's not exactly what we want.  The first problem is that all the lines start drawing at the same time.  We want to stagger them.  Also, two lines have to connect so one should start after the other, in groups so to speak.  Actually, there are thee curving horizontal lines which connect to create one line.  We should start from the top and move down.  There's also the back ground which we could paint or not.  Depending on how it looks with the bark background and without.
 
-To co-ordinate this, we can use a promise chain.  It would be better than the dots nested promises.
+To co-ordinate this, we can use a promise chain.  It would be better than the dots nested promises.  Actually we should use async/await since that will also let us do one function after another in a more concise way.
+
+Lets just change those Inkscape generated ids with our own in order.  Finally got all the lines in order, but the dasharray line drawing technique is not doing what we want.  Lets try creating an angular animation to trigger when the opacity is change.  We can put the keyframe there.  Since we have them appearing in the correct order, we just need to trigger the animations at the right times.
+
 
 
 ## Getting Started
