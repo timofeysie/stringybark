@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  title = 'sassy-app';
+  title = 'Stringybark';
   navigating:boolean;
 
   constructor(private router: Router) { }

@@ -3,14 +3,32 @@ import { Component,
 } from '@angular/core';
 import { DotComponent } from '../../components/dot/dot.component';
 import { DOCUMENT } from '@angular/common'; 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-page-detail',
   templateUrl: './lines.page.html',
   styleUrls: ['./lines.page.scss'],
+  animations: [
+    trigger('path', [
+      state('inactive', style({
+        'stroke-dashoffset': '0',
+      })),
+      state('active',   style({
+        'stroke-dashoffset': '1',
+      })),
+      transition('inactive => active', animate('dash 10s linear forwards'))
+    ])
+  ]
 })
 export class LinesPage implements OnInit, AfterViewInit {
-  origDelay = 500;
+  origDelay = 400;
   constructor(@Inject(DOCUMENT) document,
     private renderer: Renderer2) { 
     }
@@ -28,14 +46,16 @@ export class LinesPage implements OnInit, AfterViewInit {
     inOrder() {
       let delay = this.origDelay;
       let paths = document.getElementsByClassName('path');
-      console.log('paths',paths);
+      let origSmallDelay = 4;
+      let smallDelay = -4;
       for (let i = 0; i < paths.length; i++) {
           setTimeout(() => {
             let item: HTMLElement = document.getElementById('path'+i);
             this.renderer.setStyle(item, 'opacity', '1');
+            this.renderer.setStyle(item, 'animation-delay', smallDelay+'s');
+            smallDelay += origSmallDelay;
           }, delay);
           delay += this.origDelay;
-          console.log('delay',delay);
       }
     }
 

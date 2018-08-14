@@ -75,6 +75,7 @@ To co-ordinate this, we can use a promise chain.  It would be better than the do
 
 Lets just change those Inkscape generated ids with our own in order.  Finally got all the lines in order, but the dasharray line drawing technique is not doing what we want.  Lets try creating an angular animation to trigger when the opacity is change.  We can put the keyframe there.  Since we have them appearing in the correct order, we just need to trigger the animations at the right times.
 
+The problem with that idea is that we don't have a state variable to use as a trigger.  The trigger is the opacity changing from 0 to 1.  We can use an animation delay, which gets us close, but not every line takes the same time to draw, so we will have either a delay or a false start.  We will have to use the opacity change and also calculate the exact time it will take to finish the animation to set the delay on the next item.
 
 
 ## Getting Started
