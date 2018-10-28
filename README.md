@@ -144,6 +144,56 @@ Along with the server.js file the above blog added a postinstall script to the p
 
 Another [blog](https://medium.com/@hellotunmbi/how-to-deploy-angular-application-to-heroku-1d56e09c5147) showed how to set up automatic deployments via GitHub which is where the source lives.  The initial deployment failed because the new additions hadn't been deployed.  Locally it said we had to run ```npm i```.
 
+Those sound like solid tuts, but they don't work yet.
+
+This is where the [site should be live](https://stringybark.herokuapp.com/), but it's broken.
+```
+$ heroku logs
+ ›   Error: Missing required flag:
+ ›     -a, --app APP  app to run command against
+ ›   See more help with --help
+```
+
+Other advice: instead of
+```
+“postinstall”: “ng build --aot -prod”
+```
+try
+```
+“heroku-postbuild”: “ng build --prod”
+```
+
+But what about moving devDependencies into dependencies?  When we deploy 
+Move the @angular/cli dependency and mix the server and the client code, doesn't that go down the wrong path?
+
+But the error above seems to show that those are not the logs.  The local instance is not connected to Heroku via the terminal, but is set for automatic deployment via GitHub.  So trying this:
+```
+git remote add heroku git@heroku.com:stringybark.git
+```
+
+Now heroku logs works:
+```
+2018-10-28T14:27:25.302253+00:00 app[web.1]: > stringybark@0.0.1 start /app
+2018-10-28T14:27:25.302254+00:00 app[web.1]: > node server.js
+2018-10-28T14:27:25.575136+00:00 app[web.1]: module.js:550
+2018-10-28T14:27:25.575156+00:00 app[web.1]: throw err;
+2018-10-28T14:27:25.575157+00:00 app[web.1]: ^
+2018-10-28T14:27:25.575160+00:00 app[web.1]: Error: Cannot find module 'express'
+2018-10-28T14:27:25.575184+00:00 app[web.1]: at Function.Module._resolveFilename (module.js:548:15)
+2018-10-28T14:27:25.575185+00:00 app[web.1]: at Function.Module._load (module.js:475:25)
+2018-10-28T14:27:25.575186+00:00 app[web.1]: at Module.require (module.js:597:17)
+2018-10-28T14:27:25.575187+00:00 app[web.1]: at require (internal/module.js:11:18)
+2018-10-28T14:27:25.575188+00:00 app[web.1]: at Object.<anonymous> (/app/server.js:2:17)
+2018-10-28T14:27:25.575189+00:00 app[web.1]: at Module._compile (module.js:653:30)
+2018-10-28T14:27:25.575191+00:00 app[web.1]: at Object.Module._extensions..js (module.js:664:10)
+2018-10-28T14:27:25.575192+00:00 app[web.1]: at Module.load (module.js:566:32)
+2018-10-28T14:27:25.575193+00:00 app[web.1]: at tryModuleLoad (module.js:506:12)
+2018-10-28T14:27:25.575194+00:00 app[web.1]: at Function.Module._load (module.js:498:3)
+2018-10-28T14:27:25.583955+00:00 app[web.1]: npm ERR! errno 1
+2018-10-28T14:27:25.585692+00:00 app[web.1]: npm ERR! stringybark@0.0.1 start: `node server.js`
+2018-10-28T14:27:25.585846+00:00 app[web.1]: npm ERR! Exit status 1
+2018-10-28T14:27:25.586270+00:00 app[web.1]: npm ERR! Failed at the stringybark@0.0.1 start script.
+```
 
 
 
