@@ -73,7 +73,9 @@ This *works* but it's not exactly what we want.  The first problem is that all t
 
 To co-ordinate this, we can use a promise chain.  It would be better than the dots nested promises.  Actually we should use async/await since that will also let us do one function after another in a more concise way.
 
-Lets just change those Inkscape generated ids with our own in order.  Finally got all the lines in order, but the dasharray line drawing technique is not doing what we want.  Lets try creating an angular animation to trigger when the opacity is change.  We can put the keyframe there.  Since we have them appearing in the correct order, we just need to trigger the animations at the right times.
+A simpler approach would be to just change those Inkscape generated ids with our own in  the correct order.  This worked pretty well.  Finally got all the lines in order, but the dasharray line drawing technique is not doing what we want.  
+
+Tried creating an angular animation to trigger when the opacity is change and put the keyframe there.  Since we have them appearing in the correct order, we just need to trigger the animations at the right times.
 
 The problem with that idea is that we don't have a state variable to use as a trigger.  The trigger is the opacity changing from 0 to 1.  We can use an animation delay, which gets us close, but not every line takes the same time to draw, so we will have either a delay or a false start.  We will have to use the opacity change and also calculate the exact time it will take to finish the animation to set the delay on the next item.
 
@@ -129,6 +131,19 @@ After this it was a slow matter of creating the array of rows and columns in the
 ## Responsive dots
 
 The [Flexbox SVG a la Nico O](http://next.plnkr.co/edit/MXpmFahkBuDA2tTUKVNs?preview) plunker has a three-layer responsive layout that works great.
+
+
+# Deploying to Heroku
+
+Heroku is a great service that we will be using to host this app.
+
+The basic server file came [from this simple post](https://medium.com/@shubhsharma10/how-to-deploy-angular-6-app-to-heroku-52b73ac7a3aa).
+
+
+Along with the server.js file the above blog added a postinstall script to the package.json file.
+
+Another [blog](https://medium.com/@hellotunmbi/how-to-deploy-angular-application-to-heroku-1d56e09c5147) showed how to set up automatic deployments via GitHub which is where the source lives.  The initial deployment failed because the new additions hadn't been deployed.  Locally it said we had to run ```npm i```.
+
 
 
 
